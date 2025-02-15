@@ -3,12 +3,15 @@ package icu.wenxin.napcat.core;
 import org.java_websocket.client.WebSocketClient;
 import org.java_websocket.handshake.ServerHandshake;
 
+import java.net.MalformedURLException;
+import java.net.URISyntaxException;
+
 public class BotClient extends WebSocketClient {
     private final BotContext context;
 
-    public BotClient() {
-        super(serverUri);
-        this.context = context;
+    public BotClient(BotConfig config) throws URISyntaxException {
+        super(config.getUrl());
+        this.context = new BotContext();
     }
 
     @Override
@@ -19,7 +22,6 @@ public class BotClient extends WebSocketClient {
 
     @Override
     public void onMessage(String message) {
-        System.out.println("Received message: " + message);
         context.onMessage(message);
     }
 

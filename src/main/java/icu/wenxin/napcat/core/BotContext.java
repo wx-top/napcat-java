@@ -1,5 +1,7 @@
 package icu.wenxin.napcat.core;
 
+import com.alibaba.fastjson2.JSON;
+import com.alibaba.fastjson2.JSONObject;
 import icu.wenxin.napcat.handler.MessageHandler;
 import icu.wenxin.napcat.message.Message;
 import icu.wenxin.napcat.message.MessageParser;
@@ -20,13 +22,14 @@ public class BotContext {
     }
 
     public void onMessage(String message) {
-        Message msg = MessageParser.parse(message);
-        MessageHandler handler = handlers.get(msg.getType());
-        if (handler != null) {
-            handler.handle(msg);
-        } else {
-            System.out.println("No handler found for message type: " + msg.getType());
-        }
+        JSONObject msgJson = JSONObject.parseObject(message);
+        System.out.println("Received message: " + msgJson);
+//        MessageHandler handler = handlers.get(msg.getType());
+//        if (handler != null) {
+//            handler.handle(msg);
+//        } else {
+//            System.out.println("No handler found for message type: " + msg.getType());
+//        }
     }
 
     public void onClose(int code, String reason, boolean remote) {
