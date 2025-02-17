@@ -1,4 +1,4 @@
-package icu.wenxin.napcat.core;
+package icu.wenxin.napcat;
 
 import lombok.Data;
 
@@ -14,8 +14,8 @@ public class BotConfig {
     private String accessToken;
     private Integer port;
 
-    public URI getUrl() throws URISyntaxException {
-        return new URI(protocol + "://" + host + ":" + port + "?access_token=" + accessToken);
+    public String getUrl() {
+        return protocol + "://" + host + ":" + port + "?access_token=" + accessToken;
     }
 
 }
