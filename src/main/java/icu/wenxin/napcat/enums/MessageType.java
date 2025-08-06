@@ -1,43 +1,27 @@
 package icu.wenxin.napcat.enums;
 
-import icu.wenxin.napcat.interfaces.MessageData;
-import icu.wenxin.napcat.message.data.*;
 import lombok.Getter;
 
 @Getter
 public enum MessageType {
-
-    TEXT("text", Text.class),
-    FACE("face", Face.class),
-    IMAGE("image", Image.class),
-    FILE("file", File.class),
-    MUSIC("music", Music.class),
-    MFACE("mface", MFace.class),
-    NODE("node", Node.class),
-    AT("at", At.class),
-    RPS("rps", Rps.class),
-    DICE("dice", Dice.class),
-    CONTACT("contact", Contact.class),
-    FORWARD("forward", Forward.class),
-    REPLY("reply", Reply.class),
-    RECORD("record", Record.class),
-    VIDEO("video", Video.class);
+    TEXT("text", "文本消息"),
+    FACE("face", "表情消息"),
+    IMAGE("image", "图片消息"),
+    AT("at", "@消息"),
+    REPLY("reply", "回复消息"),
+    FORWARD("forward", "合并转发消息"),
+    NODE("node", "节点消息"),
+    XML("xml", "XML消息"),
+    JSON("json", "JSON消息"),
+    FILE("file", "文件消息"),
+    RECORD("record", "语音消息"),
+    VIDEO("video", "视频消息");
 
     private final String type;
-    private final Class<? extends MessageData> dataClass;
+    private final String desc;
 
-    MessageType(String type, Class<? extends MessageData> dataClass) {
+    MessageType(String type, String desc) {
         this.type = type;
-        this.dataClass = dataClass;
+        this.desc = desc;
     }
-
-    public static MessageType getMessageTypeByName(String type) {
-        for (MessageType messageType : values()) {
-            if (messageType.type.equals(type)) {
-                return messageType;
-            }
-        }
-        return null;
-    }
-
 }

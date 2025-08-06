@@ -1,5 +1,6 @@
 package icu.wenxin.napcat;
 
+import lombok.Builder;
 import lombok.Data;
 
 import java.net.MalformedURLException;
@@ -8,6 +9,7 @@ import java.net.URISyntaxException;
 import java.net.URL;
 
 @Data
+@Builder
 public class BotConfig {
     private String protocol;
     private String host;

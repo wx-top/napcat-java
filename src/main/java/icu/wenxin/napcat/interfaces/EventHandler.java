@@ -1,8 +1,8 @@
 package icu.wenxin.napcat.interfaces;
 
-import icu.wenxin.napcat.context.BaseContext;
+import com.alibaba.fastjson2.JSONObject;
 
 @FunctionalInterface
-public interface EventHandler<T extends BaseContext> {
-    void handle(T context);
+public interface EventHandler {
+    void handle(JSONObject msg);
 }
